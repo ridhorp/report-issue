@@ -5,6 +5,6 @@ class Auth extends CI_Controller
 {
 	public function index()
 	{
-		echo 'auth/index';
+		echo 'auth/index2 test';
 	}
 }

@@ -10,11 +10,6 @@
     <div class="row">
         <div class="col lg-12">
 
-            <?= form_error('index', '<div class="alert alert-danger" role="alert">', '</div>') ?>
-
-            <?= $this->session->flashdata('message'); ?>
-
-            <a href="<?= base_url("admin/input_error")  ?>" class="btn btn-primary mb-3">Add Error</a>
 
             <div class="table-responsive">
                 <table class="table table-striped dt-responsive nowrap" width="100%" id="table-error">

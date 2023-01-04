@@ -9,7 +9,7 @@
 
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
-            <?= $this->session->flashdata('message'); ?>
+            <!-- <?= $this->session->flashdata('message'); ?> -->
 
             <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
 
@@ -29,7 +29,7 @@
                             <td><?= $m['menu']; ?></td>
                             <td>
                                 <a href="#" class="badge badge-success">Edit</a>
-                                <a href="#" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('Menu/deleteMenu/') . $m['id']; ?>" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

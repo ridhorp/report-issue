@@ -11,11 +11,11 @@
                     <?= validation_errors(); ?>
                 </div>
             <?php endif; ?>
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+            <?= form_error('menu/submenu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
+            <a href="#" class="btn btn-primary mb-3 btnAddSubmenu" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
 
             <table class="table table-hover">
                 <thead>
@@ -35,13 +35,13 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $sm['title']; ?></td>
-                            <td><?= $sm['menu']; ?></td>
+                            <td><?= $sm['menu_id']; ?></td>
                             <td><?= $sm['url']; ?></td>
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="#" class="badge badge-success">Edit</a>
-                                <a href="#" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('Menu/editSubMenu/') . $sm['id']; ?>" class="badge badge-success tampilModalEdit" data-toggle="modal" data-target="#newSubMenuModal" data-id="<?= $sm['id']; ?>">Edit</a>
+                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

@@ -41,7 +41,7 @@ class Auth extends CI_Controller
 					];
 					$this->session->set_userdata($data);
 					if ($user['role_id'] == 1) {
-						redirect('admin');
+						redirect('dashboard');
 					} else {
 						redirect('user');
 					}
@@ -108,13 +108,13 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('role_id');
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+		$this->session->set_flashdata('message', '<div class="alert alert-secondary" role="alert">
             You have been Logged out..</div>');
 		redirect('auth');
 	}
 
 	public function blocked()
 	{
-		$this->load->view('auth/blocked');
+		echo 'access blocked';
 	}
 }

@@ -48,6 +48,8 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('aset/'); ?>js/sb-admin-2.min.js"></script>
 
+<script src="<?= base_url('aset/'); ?>js/script.js"></script>
+
 <script>
     $('.form-check-input').on('click', function() {
         const menuId = $(this).data('menu');
@@ -61,7 +63,7 @@
                 roleId: roleId
             },
             success: function() {
-                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleid;
+                document.location.href = "<?= base_url('admin/role-access/'); ?>" + roleid;
             }
         });
     });

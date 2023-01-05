@@ -15,7 +15,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="#" class="btn btn-primary mb-3 btnAddSubmenu" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
+            <a href="<?= base_url('menu/add_submenu'); ?>" class="btn btn-primary mb-3">Add sub menu</a>
 
             <table class="table table-hover">
                 <thead>
@@ -40,7 +40,7 @@
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="<?= base_url('Menu/getEdit/') . $sm['id']; ?>" class="badge badge-success tampilModalEdit" data-toggle="modal" data-target="#newSubMenuModal" data-id="<?= $sm['id']; ?>">Edit</a>
+                                <a href="<?= base_url('Menu/edit_submenu/') . $sm['id']; ?>" class="badge badge-success" data-id="<?= $sm['id']; ?>">Edit</a>
                                 <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('do you want to delete this menu?');">Delete</a>
                             </td>
                         </tr>
@@ -65,49 +65,3 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="newSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newSubModalLabel"> New Sub Menu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                    <form action="<?= base_url('menu/submenu'); ?>" method="post">
-                    <input type="hidden" name="id" id="id">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <select name="menu_id" id="menu_id" class="form-control">
-                            <option value="">Select Menu</option>
-                            <?php foreach ($menu as $m) : ?>
-                                <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="url" name="url" placeholder="Add new sub menu Url...">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="icon" name="icon" placeholder="Add new sub menu Icon...">
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
-                            <label class="form-check-label" for="is_active">
-                                Active Account
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

@@ -41,19 +41,19 @@ class M_log_error extends CI_model
     FROM
     " . $this->_table . " as a
     JOIN divisi as b ON a.divisi = b.id
-    ,(SELECT @row := 0) r 
+    ,(SELECT @row := 0) r where 1 = 1
     ";
 
-    // if (!empty($divisi)) {
-    //     $sql .= " AND (";
-    //     $sql .= " divisi = '" . $divisi. "' ";
-    //     $sql .= " ) ";
-    // }
+    if (!empty($divisi)) {
+        $sql .= " AND  (";
+        $sql .= " divisi = '". $divisi. "' ";
+        $sql .= " ) ";
+    }
 
         $data['totalData'] = $this->db->query($sql)->num_rows();
 
         if (!empty($like_value)) {
-            $sql .= " WHERE ( ";
+            $sql .= " AND ( ";
             $sql .= " customer LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
             $sql .= " product LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
             $sql .= " ) ";

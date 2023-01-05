@@ -10,6 +10,24 @@ class M_sub_menu extends CI_model
         return $data;
     }
 
+    public function get_id_submenu($id)
+    {
+        return $this->db->get_where('user_sub_menu', ['id' => $id])->row_array();
+    }
+
+    public function editing_data()
+    {
+        $data = [
+            'title'     => $this->input->post('title'),
+            'menu_id'   => $this->input->post('menu_id'),
+            'url'       => $this->input->post('url'),
+            'icon'      => $this->input->post('icon'),
+            'is_active' => $this->input->post('is_active'),
+        ];
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('user_sub_menu', $data);
+    }
+
     public function insert_submenu()
     {
         $data = [
@@ -30,12 +48,12 @@ class M_sub_menu extends CI_model
         redirect('menu/submenu');
     }
 
-    public function getDataEdit($id)
-    {
-        $this->db->query('SELECT * FROM' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
-        return $this->db->single();
-    }
+    // public function get_dataedit($id)
+    // {
+    //     $this->db->query('SELECT * FROM user_sub_menu ' . ' WHERE id=:id');
+    //     $this->db->bind('id', $id);
+    //     return $this->db->single();
+    // }
 
     // public function editDataSubmenu()
     // {

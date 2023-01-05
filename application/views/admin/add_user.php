@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-secondary" href="<?= base_url('admin/index') ?>" role="button">Close</a>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>

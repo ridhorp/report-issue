@@ -48,6 +48,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('aset/'); ?>js/sb-admin-2.min.js"></script>
 
+<!-- Script edit submenu -->
 <script src="<?= base_url('aset/'); ?>js/script.js"></script>
 
 <script>

@@ -16,10 +16,11 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $data['title']  = 'Dashboard ';
-        $data['user']   = $this->M_user->get_user();
-        $data['admin']  = $this->M_dashboard_error->get_error();
-        $data['divisi']  = $this->session->userdata('divisi');
+        $data['title']          = 'Dashboard ';
+        $data['user']           = $this->M_user->get_user();
+        $data['admin']          = $this->M_dashboard_error->get_error();
+        $data['divisi']         = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
 
 

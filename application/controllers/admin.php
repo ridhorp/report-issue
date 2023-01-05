@@ -37,9 +37,11 @@ class Admin extends CI_Controller
 
     public function input_error()
     {
-        $data['title']  = 'Form Error ';
-        $data['user']   = $this->M_user->get_user();
-        $data['admin']  = $this->M_dashboard_error->get_error();
+        $data['title']          = 'Form Error ';
+        $data['user']           = $this->M_user->get_user();
+        $data['admin']          = $this->M_dashboard_error->get_error();
+        $data['divisi']         = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
 
         $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');
@@ -86,10 +88,6 @@ class Admin extends CI_Controller
             $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">Error Added</div>');
             redirect('admin');
         }
-    }
-
-    public function save_error()
-    {
     }
 
     public function list_error()
@@ -211,6 +209,8 @@ class Admin extends CI_Controller
     {
         $data['title']  = 'User Management';
         $data['user']   = $this->M_user->get_user();
+        $data['divisi']  = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
         // $data['add user'] = $this->db->get('add_user')->result_array();
 
@@ -245,8 +245,8 @@ class Admin extends CI_Controller
 
     public function add_user()
     {
-        $data['title']          = 'Add User';
-        $data['user']           = $this->M_user->get_user();
+        $data['title']  = 'User Management';
+        $data['user']   = $this->M_user->get_user();
         $data['divisi']  = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 

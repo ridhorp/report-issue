@@ -17,6 +17,8 @@ class User extends CI_Controller
     {
         $data['title']  = 'My Profile';
         $data['user']   = $this->M_user->get_user();
+        $data['divisi']  = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

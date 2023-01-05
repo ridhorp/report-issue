@@ -40,8 +40,8 @@
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="<?= base_url('Menu/editSubMenu/') . $sm['id']; ?>" class="badge badge-success tampilModalEdit" data-toggle="modal" data-target="#newSubMenuModal" data-id="<?= $sm['id']; ?>">Edit</a>
-                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('Menu/getEdit/') . $sm['id']; ?>" class="badge badge-success tampilModalEdit" data-toggle="modal" data-target="#newSubMenuModal" data-id="<?= $sm['id']; ?>">Edit</a>
+                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('do you want to delete this menu?');">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>
@@ -74,10 +74,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('menu/submenu'); ?>" method="post">
-                <div class="modal-body">
+            <div class="modal-body">
+                    <form action="<?= base_url('menu/submenu'); ?>" method="post">
+                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Add new sub menu name...">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="">
                     </div>
                     <div class="form-group">
                         <select name="menu_id" id="menu_id" class="form-control">

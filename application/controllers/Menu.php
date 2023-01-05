@@ -78,11 +78,23 @@ class Menu extends CI_Controller
     }
 
 
-    public function getEdit()
+    public function getEdit($id)
     {
-        $this->M_sub_menu->getEdit($_POST['id']);
+        echo json_encode ($this->model('M_sub_menu')->getDataEdit($_POST['id']));
     }
 
+    // public function Edit()
+    // {
+    //     if ( $this->model('M_sub_menu')->editDataSubmenu($_POST) > 0 ) {
+    //         Flasher::setFlash('berhasil', 'edited', 'success');
+    //         header('Location: ' . BASEURL . '/Menu');
+    //         exit;
+    //     } else{
+    //         Flasher::setFlash('gagal', 'edited', 'danger');
+    //         header('Location: ' . BASEURL . '/Menu');
+    //         exit;
+    //     }
+    // }
 
 }
 

@@ -82,7 +82,8 @@
             type: "post",
             data: {
                 tanggal_awal: '',
-                tanggal_akhir: ''
+                tanggal_akhir: '',
+                divisi: '<?= $divisi; ?>'
             },
             error: function() {
                 $(".my-table-error").html("");

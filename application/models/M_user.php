@@ -23,18 +23,21 @@ class M_user extends CI_model
         $limit_start = null,
         $limit_length = null,
         $tanggal_awal = null,
-        $tanggal_akhir = null
+        $tanggal_akhir = null,
+        $divisi = null
     ) {
         $sql = "
     SELECT
         (@row:=@row+1) AS nomor,
-        id,
-        name,
-        email,
-        divisi,
-        role_id
+        a.id, 
+        a.name,
+        a.email,
+        a.divisi,
+        a.role_id,
+        b.name as name_divisi
     FROM
-    " . $this->_table . "
+    " . $this->_table . " as a
+    JOIN divisi as b ON a.divisi = b.id
     ,(SELECT @row := 0) r 
     ";
 

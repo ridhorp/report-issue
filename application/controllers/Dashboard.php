@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller
             redirect('auth');
         }
         // is_logged_in();
-        $this->load->model(array('M_log_error', 'M_dashboard_error', 'M_user'));
+        $this->load->model(array('M_log_error', 'M_dashboard_error', 'M_user', 'M_divisi'));
     }
 
     public function index()
@@ -19,6 +19,7 @@ class Dashboard extends CI_Controller
         $data['title']  = 'Dashboard ';
         $data['user']   = $this->M_user->get_user();
         $data['admin']  = $this->M_dashboard_error->get_error();
+        $data['divisi']  = $this->session->userdata('divisi');
 
 
 

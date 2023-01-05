@@ -14,7 +14,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="<?= base_url("admin/input_error")  ?>" class="btn btn-primary mb-3">Add Error</a>
+            <a href="<?= base_url("admin/input_error"); ?>" class="btn btn-primary mb-3">Add Error</a>
 
             <div class="table-responsive">
                 <table class="table table-striped dt-responsive nowrap" width="100%" id="table-error">
@@ -87,7 +87,8 @@
             type: "post",
             data: {
                 tanggal_awal: '',
-                tanggal_akhir: ''
+                tanggal_akhir: '',
+                divisi: '<?= $divisi; ?>'
             },
             error: function() {
                 $(".my-table-error").html("");

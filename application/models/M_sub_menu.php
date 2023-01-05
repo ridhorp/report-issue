@@ -29,4 +29,21 @@ class M_sub_menu extends CI_model
         $this->db->query($query);
         redirect('menu/submenu');
     }
+
+    public function getDataEdit($id)
+    {
+        $this->db->query('SELECT * FROM' . $this->table . ' WHERE id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
+
+    // public function editDataSubmenu()
+    // {
+    //     $query = "UPDATE user_sub_menu SET
+    //                 title = :title,
+    //                 menu = :menu,
+    //                 url = :url,
+    //                 icon = :icon
+    //                 WHERE id = :id";
+    // }
 }

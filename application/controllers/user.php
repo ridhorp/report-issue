@@ -9,7 +9,7 @@ class User extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
-        $this->load->model(array('M_user'));
+        $this->load->model(array('M_user', 'M_divisi'));
     }
 
 
@@ -25,41 +25,6 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function add_user()
-    {
-        $data['title']  = 'User Management';
-        $data['user']   = $this->M_user->get_user();
-
-        // $data['add user'] = $this->db->get('add_user')->result_array();
-
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
-        $this->form_validation->set_rules('password1', 'Pasword', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('user/add_user', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $data_form = array(
-                'name'      => ($this->input->post('name', true)),
-                'email'     => ($this->input->post('email', true)),
-                'divisi'    => ($this->input->post('divisi', true)),
-                'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                // 'role_id' => 2, ($this->input->post('role', true)),
-                'is_active' => 1,
-                'date_created' => time()
-            );
-
-            $this->M_user->insert_user($data_form);
-            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
-            redirect('user/add_user');
-        }
-    }
 
     public function list_user()
     {
@@ -87,7 +52,7 @@ class User extends CI_Controller
             $nestedData[]   = $row['nomor'];
             $nestedData[]   = $row['name'];
             $nestedData[]   = $row['email'];
-            $nestedData[]   = $row['divisi'];
+            $nestedData[]   = $row['name_divisi'];
             $nestedData[]   = $row['role_id'];
             $data[] = $nestedData;
         }

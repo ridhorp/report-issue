@@ -12,16 +12,13 @@
                     <input type="date" class="form-control" id="date" name="entry_date" placeholder="Enter Date">
                 </div>
                 <div class="form-group">
-                    <select name="divisi" id="divisi" class="form-control">
-                        <option value="">Divisi</option>
-                        <option value="Graha">Graha</option>
-                        <option value="CG Digital">CG Digital</option>
-                        <option value="Marketing Galuh">Marketing Galuh</option>
-                        <option value="Purwakarta">Purwakarta</option>
-                        <option value="Cianjur">Cianjur</option>
-                        <option value="Online">Online</option>
-                    </select>
-                </div>
+                        <select name="divisi" id="divisi" class="form-control">
+                            <option value="">Divisi</option>
+                            <?php foreach ($list_divisi as $row) : ?>
+                                <option value="<?= $row->id;?>"><?= $row->name;?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="customer" name="customer" placeholder="Customer name">
                 </div>

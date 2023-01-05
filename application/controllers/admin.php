@@ -11,7 +11,7 @@ class Admin extends CI_Controller
             redirect('auth');
         }
         // is_logged_in();
-        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user'));
+        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi'));
     }
 
     public function index()
@@ -19,22 +19,8 @@ class Admin extends CI_Controller
         $data['title']  = 'Input Error';
         $data['user']   = $this->M_user->get_user();
         $data['admin']  = $this->M_dashboard_error->get_error();
-
-        $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');
-        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
-        $this->form_validation->set_rules('customer', 'Customer name', 'required');
-        $this->form_validation->set_rules('product', 'Code product', 'required');
-        $this->form_validation->set_rules('material_quantity', 'Material Quantity', 'required');
-        $this->form_validation->set_rules('material_loss', 'Material_Loss', 'required');
-        $this->form_validation->set_rules('service_loss', 'Service_Loss', 'required');
-        $this->form_validation->set_rules('error_category', 'Error category', 'required');
-        $this->form_validation->set_rules('error_type', 'Error type', 'required');
-        $this->form_validation->set_rules('description', 'Description', 'required');
-        $this->form_validation->set_rules('reason', 'Reason', 'required');
-        $this->form_validation->set_rules('solution', 'Solution', 'required');
-        $this->form_validation->set_rules('PIC', 'PIC', 'required');
-        $this->form_validation->set_rules('problem_solve', 'Problem solve', 'required');
-
+        $data['divisi']  = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -133,7 +119,7 @@ class Admin extends CI_Controller
             $nestedData = array();
             $nestedData[]   = $row['nomor'];
             $nestedData[]   = $row['entry_date'];
-            $nestedData[]   = $row['divisi'];
+            $nestedData[]   = $row['name_divisi'];
             $nestedData[]   = $row['customer'];
             $nestedData[]   = $row['product'];
             $nestedData[]   = $row['material_quantity'];
@@ -218,5 +204,80 @@ class Admin extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Access Changed!</div>');
+    }
+
+    
+    public function user()
+    {
+        $data['title']  = 'User Management';
+        $data['user']   = $this->M_user->get_user();
+
+        // $data['add user'] = $this->db->get('add_user')->result_array();
+
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('password1', 'Pasword', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/user', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data_form = array(
+                'name'      => ($this->input->post('name', true)),
+                'email'     => ($this->input->post('email', true)),
+                'divisi'    => ($this->input->post('divisi', true)),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                // 'role_id' => 2, ($this->input->post('role', true)),
+                'is_active' => 1,
+                'date_created' => time()
+            );
+
+            $this->M_user->insert_user($data_form);
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
+            redirect('admin/user');
+        }
+    }
+
+    public function add_user()
+    {
+        $data['title']          = 'Add User';
+        $data['user']           = $this->M_user->get_user();
+        $data['divisi']  = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+
+        // $data['add user'] = $this->db->get('add_user')->result_array();
+
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('password1', 'Pasword', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/add_user', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data_form = array(
+                'name'      => ($this->input->post('name', true)),
+                'email'     => ($this->input->post('email', true)),
+                'divisi'    => ($this->input->post('divisi', true)),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                // 'role_id' => 2, ($this->input->post('role', true)),
+                'is_active' => 1,
+                'date_created' => time()
+            );
+
+            $this->M_user->insert_user($data_form);
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
+            redirect('admin/user');
+        }
     }
 }

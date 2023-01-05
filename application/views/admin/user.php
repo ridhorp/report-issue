@@ -10,11 +10,11 @@
     <div class="row">
         <div class="col lg-8">
 
-            <?= form_error('add_user', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+            <?= form_error('admin/user', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newUserModal">Add User</a>
+            <a href="<?= base_url('admin/add_user'); ?>" class="btn btn-primary mb-3">Add User</a>
 
             <div class="table-responsive">
                 <table class="table table-striped dt -responsive nowrap" width="100%" id="table-error">
@@ -42,52 +42,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('user/add_user'); ?>" method="post">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Add user name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Add email">
-                    </div>
-                    <div class="form-group">
-                        <select name="divisi" id="divisi" class="form-control">
-                            <option value="">Divisi</option>
-                            <option value="Graha">Graha</option>
-                            <option value="CG Digital">CG Digital</option>
-                            <option value="Marketing Galuh">Marketing Galuh</option>
-                            <option value="Purwakarta">Purwakarta</option>
-                            <option value="Cianjur">Cianjur</option>
-                            <option value="Online">Online</option>
-                        </select>
-                    </div>
-                    <div class=" form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
-                            <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('aset/'); ?>vendor/jquery/jquery.min.js"></script>
@@ -125,6 +80,7 @@
             data: {
                 tanggal_awal: '',
                 tanggal_akhir: ''
+
             },
             error: function() {
                 $(".my-table-error").html("");

@@ -22,25 +22,33 @@ class M_log_error extends CI_model
         $sql = "
     SELECT
         (@row:=@row+1) AS nomor,
-        id,
-        entry_date,
-        divisi,
-        customer,
-        product,
-        material_quantity,
-        material_loss,
-        service_loss,
-        error_category,
-        error_type,
-        description,
-        reason,
-        PIC,
-        solution,
-        problem_solve
+        a.id,
+        a.entry_date,
+        a.divisi,
+        a.customer,
+        a.product,
+        a.material_quantity,
+        a.material_loss,
+        a.service_loss,
+        a.error_category,
+        a.error_type,
+        a.description,
+        a.reason,
+        a. PIC,
+        a.solution,
+        a.problem_solve,
+        b.name as name_divisi
     FROM
-    " . $this->_table . "
+    " . $this->_table . " as a
+    JOIN divisi as b ON a.divisi = b.id
     ,(SELECT @row := 0) r 
     ";
+
+    // if (!empty($divisi)) {
+    //     $sql .= " AND (";
+    //     $sql .= " divisi = '" . $divisi. "' ";
+    //     $sql .= " ) ";
+    // }
 
         $data['totalData'] = $this->db->query($sql)->num_rows();
 

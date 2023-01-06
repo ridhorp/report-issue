@@ -54,8 +54,9 @@ class M_log_error extends CI_model
 
         if (!empty($like_value)) {
             $sql .= " AND ( ";
-            $sql .= " customer LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
-            $sql .= " product LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
+            $sql .= " a.customer LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
+            $sql .= " or a.product LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
+            $sql .= " or a.entry_date LIKE '%" . $this->db->escape_like_str($like_value) . "%'";
             $sql .= " ) ";
         }
 

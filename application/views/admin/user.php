@@ -24,7 +24,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Divisi</th>
-                            <th scope="col">Role</th>
+                            <th scope="col">Role id</th>
                         </tr>
                     </thead>
                 </table>

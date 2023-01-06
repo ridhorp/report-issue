@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Menu</th>
+                        <th scope="col">Menu id</th>
                         <th scope="col">URL</th>
                         <th scope="col">Icon</th>
                         <th scope="col">Active</th>

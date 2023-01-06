@@ -9,7 +9,7 @@
                 <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
                 <!-- <?= $this->session->flashdata('message'); ?> -->
                 <div class="form-group">
-                    <input type="date" class="form-control" id="date" name="entry_date" placeholder="Enter Date">
+                    <input type="date" class="form-control" id="date" name="entry_date" placeholder="Enter Date" autocomplete="off">
                 </div>
                 <div class="form-group">
                         <select name="divisi" id="divisi" class="form-control">
@@ -20,20 +20,20 @@
                         </select>
                     </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="customer" name="customer" placeholder="Customer name">
+                    <input type="text" class="form-control" id="customer" name="customer" placeholder="Customer name" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="product" name="product" placeholder="Code Producut">
+                    <input type="text" class="form-control" id="product" name="product" placeholder="Code Producut" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="quantity" name="material_quantity" placeholder="Material Quantity">
+                    <input type="text" class="form-control" id="quantity" name="material_quantity" placeholder="Material Quantity" autocomplete="off">
 
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="material" name="material_loss" placeholder="Material loss">
+                    <input type="text" class="form-control" id="material" name="material_loss" placeholder="Material loss" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="service" name="service_loss" placeholder="Service loss">
+                    <input type="text" class="form-control" id="service" name="service_loss" placeholder="Service loss" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <select name="error_category" id="error_category" class="form-control">
@@ -43,22 +43,22 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="type" name="error_type" placeholder="Error type">
+                    <input type="text" class="form-control" id="type" name="error_type" placeholder="Error type" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Description" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="reason" name="reason" placeholder="Reason">
+                    <input type="text" class="form-control" id="reason" name="reason" placeholder="Reason" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="solution" name="solution" placeholder="Solution">
+                    <input type="text" class="form-control" id="solution" name="solution" placeholder="Solution" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="PIC" name="pic" placeholder="PIC">
+                    <input type="text" class="form-control" id="PIC" name="pic" placeholder="PIC" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="solve" name="problem_solve" placeholder="Problem Solve">
+                    <input type="text" class="form-control" id="solve" name="problem_solve" placeholder="Problem Solve" autocomplete="off">
                 </div>
                 <!-- <div class="form-group">
                         <div class="form-check">

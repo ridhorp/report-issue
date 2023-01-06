@@ -16,7 +16,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">id</th>
                         <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -29,7 +29,6 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/roleAccess/') . $r['id']; ?>" class="badge badge-warning">Access</a>
-                                <a href="#" class="badge badge-success">Edit</a>
                                 <a href="#" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>

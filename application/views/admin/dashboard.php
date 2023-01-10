@@ -10,26 +10,26 @@
     <div class="row">
         <div class="col lg-12">
 
-
             <div class="table-responsive">
                 <table class="table table-striped dt-responsive nowrap" width="100%" id="table-error">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Entry Date</th>
-                            <th scope="col">Divisi</th>
+                            <!-- <th scope="col">Divisi</th> -->
                             <th scope="col">Customer name</th>
                             <th scope="col">Code product</th>
-                            <th scope="col">Material Quantity</th>
-                            <th scope="col">Material Loss</th>
-                            <th scope="col">Service Loss</th>
+                            <!-- <th scope="col">Material Quantity</th> -->
+                            <!-- <th scope="col">Material Loss</th> -->
+                            <!-- <th scope="col">Service Loss</th> -->
                             <th scope="col">Error category</th>
                             <th scope="col">Error type</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Solution</th>
-                            <th scope="col">PIC</th>
-                            <th scope="col">Problem solve</th>
+                            <!-- <th scope="col">Description</th> -->
+                            <!-- <th scope="col">Reason</th> -->
+                            <!-- <th scope="col">Solution</th> -->
+                            <!-- <th scope="col">PIC</th> -->
+                            <!-- <th scope="col">Problem solve</th> -->
+                            <th scope="row">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -44,6 +44,59 @@
 
 </div>
 <!-- End of Main Content -->
+
+
+
+<div class="modal fade" id="#">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" clase="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Error detail</h4>
+            </div>
+            <div class="modal-body table-responsive">
+                <table class="table table-bordered no-margin">
+                    <tbody>
+                        <tr>
+                            <th style="">Material qty : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Material loss : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Service loss : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Description : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Reason : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Solution : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">PIC : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th style="">Problem Solve : </th>
+                            <td><span id=""></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -102,4 +155,27 @@
 
         });
     });
+</script>
+
+<script>
+$(document).raedy(function() {
+    $(document).on('click'. '#error', function() {
+        var material_quantity   = $(this).data('material_quantity');
+        var material_loss       = $(this).data('material_loss');
+        var service_loss        = $(this).data('service_loss');
+        var description         = $(this).data('description');
+        var reason              = $(this).data('reason');
+        var pic                 = $(this).data('pic');
+        var solution            = $(this).data('solution');
+        var problem_solve       = $(this).data('problem_solve');
+        $('#material_quantity').text(material_quantity);
+        $('#material_loss ').text(material_loss );
+        $('#service_loss').text(service_loss);
+        $('#description').text(description);
+        $('#reason').text(reason);
+        $('#pic').text(pic);
+        $('#solution').text(solution);
+        $('#problem_solve').text(problem_solve);
+    })
+})
 </script>

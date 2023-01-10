@@ -12,7 +12,6 @@ class M_user extends CI_model
 
     public function insert_user($data)
     {
-
         $this->db->insert($this->_table, $data);
     }
 
@@ -38,7 +37,7 @@ class M_user extends CI_model
     FROM
     " . $this->_table . " as a
     JOIN divisi as b ON a.divisi = b.id
-    ,(SELECT @row := 0) r 
+    ,(SELECT @row := 0) r where 1 = 1
     ";
 
         $data['totalData'] = $this->db->query($sql)->num_rows();

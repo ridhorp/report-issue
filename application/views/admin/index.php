@@ -15,6 +15,7 @@
             <?= $this->session->flashdata('message'); ?>
 
             <a href="<?= base_url("admin/input_error"); ?>" class="btn btn-primary mb-3">Add Error</a>
+            <!-- <a href="<?= base_url("Admin/excel"); ?>" class="btn btn-success mb-3 fad fa-download">Download</a> -->
 
             <div class="table-responsive">
                 <table class="table table-striped dt-responsive nowrap" width="100%" id="table-error">
@@ -22,19 +23,20 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Entry Date</th>
-                            <th scope="col">Divisi</th>
+                            <!-- <th scope="col">Divisi</th> -->
                             <th scope="col">Customer name</th>
                             <th scope="col">Code product</th>
-                            <th scope="col">Material Quantity</th>
-                            <th scope="col">Material Loss</th>
-                            <th scope="col">Service Loss</th>
+                            <!-- <th scope="col">Material Quantity</th> -->
+                            <!-- <th scope="col">Material Loss</th> -->
+                            <!-- <th scope="col">Service Loss</th> -->
                             <th scope="col">Error category</th>
                             <th scope="col">Error type</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Solution</th>
-                            <th scope="col">PIC</th>
-                            <th scope="col">Problem solve</th>
+                            <!-- <th scope="col">Description</th> -->
+                            <!-- <th scope="col">Reason</th> -->
+                            <!-- <th scope="col">Solution</th> -->
+                            <!-- <th scope="col">PIC</th> -->
+                            <!-- <th scope="col">Problem solve</th> -->
+                            <th scope="row">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -61,10 +63,35 @@
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <!-- DATATABLES BS 4-->
-<!-- <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script> -->
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
+</script>
 <script>
     var dataTable = $('#table-error').DataTable({
         "serverSide": true,
@@ -83,7 +110,7 @@
             [10, 15, 20]
         ],
         "ajax": {
-            url: "<?= site_url('admin/list_error'); ?>",
+            url: "<?= site_url('admin/list_error_admin'); ?>",
             type: "post",
             data: {
                 tanggal_awal: '',

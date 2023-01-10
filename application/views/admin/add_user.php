@@ -5,10 +5,10 @@
             <form action="<?= base_url('admin/user'); ?>" method="post" id="form_usser">
                 <div class="body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Add user name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Add user name" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Add email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Add email" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <select name="divisi" id="divisi" class="form-control">

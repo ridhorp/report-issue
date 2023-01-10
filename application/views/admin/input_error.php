@@ -12,14 +12,6 @@
                     <input type="date" class="form-control" id="date" name="entry_date" placeholder="Enter Date" autocomplete="off">
                 </div>
                 <div class="form-group">
-                        <select name="divisi" id="divisi" class="form-control">
-                            <option value="">Divisi</option>
-                            <?php foreach ($list_divisi as $row) : ?>
-                                <option value="<?= $row->id;?>"><?= $row->name;?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                <div class="form-group">
                     <input type="text" class="form-control" id="customer" name="customer" placeholder="Customer name" autocomplete="off">
                 </div>
                 <div class="form-group">

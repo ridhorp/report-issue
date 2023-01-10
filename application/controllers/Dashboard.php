@@ -32,4 +32,11 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
         $this->session->set_Flashdata('message', '<div class= "alert alert-danger" role="alert"></div>');
     }
+
+
+    public function deleteError($id)
+    {
+        ($this->M_dashboard_error->deleteError($id) > 0 );
+        redirect('dashboard');
+    }
 }

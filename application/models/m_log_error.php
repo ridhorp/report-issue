@@ -84,4 +84,26 @@ class M_log_error extends CI_model
         $data['query'] = $this->db->query($sql);
         return $data;
     }
+
+    public function editing_data()
+    {
+        $data = [
+            'entry_date'        => $this->input->post('entry_date'),
+            'divisi'            => $this->session->userdata('divisi'),
+            'customer'          => $this->input->post('customer'),
+            'product'           => $this->input->post('product'),
+            'material_quantity' => $this->input->post('material_quantity'),
+            'material_loss'     => $this->input->post('material_loss'),
+            'service_loss'      => $this->input->post('service_loss'),
+            'error_category'    => $this->input->post('error_category'),
+            'error_type'        => $this->input->post('error_type'),
+            'description'       => $this->input->post('description'),
+            'reason'            => $this->input->post('reason'),
+            'solution'          => $this->input->post('solution'),
+            'pic'               => $this->input->post('pic'),
+            'problem_solve'     => $this->input->post('problem_solve')
+        ];
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('dashboard_error', $data);
+    }
 }

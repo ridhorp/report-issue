@@ -131,7 +131,7 @@ class Menu extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->M_sub_menu->insert_submenu();
-            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New Menu Added!</div>');
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New Submenu Edited!</div>');
             redirect('menu/submenu');
         }
     }

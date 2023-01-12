@@ -251,7 +251,7 @@ class Admin extends CI_Controller
             // $nestedData[]   = $row['PIC'];
             // $nestedData[]   = $row['solution'];
             // $nestedData[]   = $row['problem_solve'];
-            $nestedData[]   = "<a href='Admin/editerror/".$row['id']."' class='badge badge-info'>Edit</a> <a href='Admin/detailerror/".$row['id']."' class='badge badge-warning'>Detail</a>";
+            $nestedData[]   = "<a href='Admin/editerror/".$row['id']."' class='badge badge-info'>Edit</a> <a href='Admin/detailerror/".$row['id']."' class='badge badge-warning'>Detail</a> <a href='Admin/deleteerror/".$row['id']."' class='badge badge-danger'>Delete</a>";
             $data[] = $nestedData;
         }
 
@@ -263,6 +263,12 @@ class Admin extends CI_Controller
         );
 
         echo json_encode($json_data);
+    }
+
+    public function deleteerror($id)
+    {
+        ($this->M_log_error->deletedError($id) > 0 );
+        redirect('admin');
     }
 
     public function role()

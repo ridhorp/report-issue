@@ -106,4 +106,11 @@ class M_log_error extends CI_model
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('dashboard_error', $data);
     }
+
+    public function deletedError($id)
+    {
+        $query = "DELETE FROM dashboard_error WHERE id = $id";
+        $this->db->query($query);
+        redirect('admin/index');
+    }
 }

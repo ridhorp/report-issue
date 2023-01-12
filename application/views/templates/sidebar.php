@@ -2,9 +2,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user'); ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-desktop"></i>
+            <i class="fas fa-exclamation-triangle"></i>
         </div>
         <div class="sidebar-brand-text mx-3">LOG - ERROR</div>
     </a>

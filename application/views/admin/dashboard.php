@@ -46,60 +46,6 @@
 <!-- End of Main Content -->
 
 
-
-<div class="modal fade" id="#">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" clase="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">Error detail</h4>
-            </div>
-            <div class="modal-body table-responsive">
-                <table class="table table-bordered no-margin">
-                    <tbody>
-                        <tr>
-                            <th style="">Material qty : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Material loss : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Service loss : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Description : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Reason : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Solution : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">PIC : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                        <tr>
-                            <th style="">Problem Solve : </th>
-                            <td><span id=""></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('aset/'); ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('aset/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

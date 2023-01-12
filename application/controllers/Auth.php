@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 					if ($user['role_id'] == 1) {
 						redirect('dashboard');
 					} else {
-						redirect('user');
+						redirect('dashboard');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">

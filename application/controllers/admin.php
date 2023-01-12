@@ -385,6 +385,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/add_user', $data);
             $this->load->view('templates/footer');
+            $this->session->set_Flashdata('message', '<div class= "alert alert-danger" role="alert">Data is required</div>');
         } else {
             $data_form = array(
                 'name'      => ($this->input->post('name', true)),

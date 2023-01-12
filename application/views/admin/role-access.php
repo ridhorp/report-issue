@@ -35,7 +35,9 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-
+            <div class="modal-footer">
+                <a class="btn btn-secondary" href="<?= base_url('admin/role') ?>" role="button">Close</a>
+            </div>
         </div>
     </div>
 

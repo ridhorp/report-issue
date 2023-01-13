@@ -41,7 +41,7 @@
                             <td><?= $sm['is_active']; ?></td>
                             <td>
                                 <a href="<?= base_url('Menu/edit_submenu/') . $sm['id']; ?>" class="badge badge-success" data-id="<?= $sm['id']; ?>">Edit</a>
-                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('do you want to delete this menu?');">Delete</a>
+                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('ingin menghapus data ini?');">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>
@@ -65,3 +65,23 @@
 
 
 <!-- Modal -->
+<div class="modal fade" id="deleteSubmenuModal" tabindex="-1" aria-labelledby="deleteSubmenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="id_submenu" name="id_submenu">
+            Do you want to deleted this submenu?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-danger" href="<?= base_url('Menu/deleteSubMenu/'). $sm['id'];?>" role="button">Delete</a>
+        </div>
+        </div>
+    </div>
+</div>

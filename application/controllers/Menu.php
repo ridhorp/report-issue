@@ -142,24 +142,5 @@ class Menu extends CI_Controller
         redirect('menu/submenu');
     }
 
-
-    // public function getEdit()
-    // {
-    //     echo json_encode($this->M_sub_menu->get_dataedit($_POST['id']));
-    // }
-
-    // public function Edit()
-    // {
-    //     if ( $this->model('M_sub_menu')->editDataSubmenu($_POST) > 0 ) {
-    //         Flasher::setFlash('berhasil', 'edited', 'success');
-    //         header('Location: ' . base_url . '/Menu');
-    //         exit;
-    //     } else{
-    //         Flasher::setFlash('gagal', 'edited', 'danger');
-    //         header('Location: ' . base_rul . '/Menu');
-    //         exit;
-    //     }
-    // }
-
 }
 

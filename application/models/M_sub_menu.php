@@ -48,20 +48,4 @@ class M_sub_menu extends CI_model
         redirect('menu/submenu');
     }
 
-    // public function get_dataedit($id)
-    // {
-    //     $this->db->query('SELECT * FROM user_sub_menu ' . ' WHERE id=:id');
-    //     $this->db->bind('id', $id);
-    //     return $this->db->single();
-    // }
-
-    // public function editDataSubmenu()
-    // {
-    //     $query = "UPDATE user_sub_menu SET
-    //                 title = :title,
-    //                 menu = :menu,
-    //                 url = :url,
-    //                 icon = :icon
-    //                 WHERE id = :id";
-    // }
 }

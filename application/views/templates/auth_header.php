@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="https://ciptagrafika.com/wp-content/uploads/cg-logo-png.png" type="x-icon">
+
     <title>Log - In</title>
 
     <!-- Custom fonts for this template-->

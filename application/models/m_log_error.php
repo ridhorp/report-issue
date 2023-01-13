@@ -9,6 +9,14 @@ class M_log_error extends CI_model
         $this->db->insert('dashboard_error', $data);
     }
 
+    
+    public function deletedError($id)
+    {
+        $query = "DELETE FROM dashboard_error WHERE id = $id";
+        $this->db->query($query);
+        redirect('admin/index');
+    }
+
     public function fetch_list_error(
         $like_value = null,
         $column_order = null,
@@ -105,12 +113,5 @@ class M_log_error extends CI_model
         ];
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('dashboard_error', $data);
-    }
-
-    public function deletedError($id)
-    {
-        $query = "DELETE FROM dashboard_error WHERE id = $id";
-        $this->db->query($query);
-        redirect('admin/index');
     }
 }

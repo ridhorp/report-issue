@@ -52,14 +52,6 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="solve" name="problem_solve" placeholder="Problem Solve" autocomplete="off">
                 </div>
-                <!-- <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
-                            <label class="form-check-label" for="is_active">
-                                Active Account
-                            </label>
-                        </div>
-                    </div> -->
             </div>
             <form action="<?= base_url('admin'); ?>" method="post">
                 <div class="modal-footer">

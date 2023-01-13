@@ -12,13 +12,20 @@ class M_dashboard_error extends CI_model
 
     public function get_id_error($id)
     {
-        return $this->db->get_where('dashboard_error', ['id' => $id])->row_array();
+        return $this->db->get_where('dashboard_error', ['id' => $id])->row();
     }
 
     public function detail_error($id)
     {
         $query = $this->db->get_where('dashboard_error', array('id' => $id))->row();
         return $query;
+    }
+
+    public function deletedError($id)
+    {
+        $query = "DELETE FROM dashboard_error WHERE id = $id";
+        $this->db->query($query);
+        redirect('admin/index');
     }
 
     public function insert_error()
@@ -41,12 +48,5 @@ class M_dashboard_error extends CI_model
         ];
         $data = $this->db->insert('dashboard', $data);
         return $data;
-    }
-
-    public function deleteError($id)
-    {
-        $query = "DELETE FROM dashboard_error WHERE id = $id";
-        $this->db->query($query);
-        redirect('dashboard');
     }
 }

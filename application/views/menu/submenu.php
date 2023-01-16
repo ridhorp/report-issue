@@ -41,7 +41,7 @@
                             <td><?= $sm['is_active']; ?></td>
                             <td>
                                 <a href="<?= base_url('Menu/edit_submenu/') . $sm['id']; ?>" class="badge badge-success" data-id="<?= $sm['id']; ?>">Edit</a>
-                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" onclick="return confirm('ingin menghapus data ini?');">Delete</a>
+                                <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" data-toggle='modal' data-target='#deleteSubmenuModal'>Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

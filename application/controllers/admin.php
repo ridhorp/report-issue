@@ -117,6 +117,7 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['entry_date'];
             $nestedData[]   = $row['customer'];
             $nestedData[]   = $row['product'];
+            $nestedData[]   = $row['product'];
             $nestedData[]   = $row['error_category'];
             $nestedData[]   = $row['error_type'];
             $nestedData[]   = "<a href='Admin/detailerror/" . $row['id'] . "' class='badge badge-warning'>Detail</a>";

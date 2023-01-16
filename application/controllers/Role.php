@@ -65,4 +65,10 @@ class Role extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Access Changed!</div>');
     }
+
+    public function deleteRole($id)
+    {
+        ($this->M_role_user->deleteRole($id) > 0 );
+        redirect('Role/role');
+    }
 }

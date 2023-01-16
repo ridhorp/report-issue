@@ -29,7 +29,7 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?= base_url('Role/roleAccess/') . $r['id']; ?>" class="badge badge-warning">Access</a>
-                                <a href="#" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('Role/deleteRole/') . $r['id']; ?>" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

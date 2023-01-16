@@ -66,4 +66,24 @@ class M_user extends CI_model
         $data['query'] = $this->db->query($sql);
         return $data;
     }
+
+    public function deleteUser($id)
+    {
+        $query = "DELETE FROM user WHERE id = $id";
+        $this->db->query($query);
+        redirect('User/user');
+    }
+
+    public function insert_useredit()
+    {
+        $data = [
+            'name'     => $this->input->post('name'),
+            'email'   => $this->input->post('email'),
+            'divisi'       => $this->input->post('divisi'),
+            'password'      => $this->input->post('password'),
+            'role_id' => $this->input->post('role_id'),
+        ];
+        $data = $this->db->insert('user', $data);
+        return $data;
+    }
 }

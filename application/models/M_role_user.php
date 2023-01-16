@@ -61,4 +61,11 @@ class M_role_user extends CI_model
         ];
         $data = $this->db->delete('user_access_menu', $data);
     }
+
+    public function deleteRole($id)
+    {
+        $query = "DELETE FROM user_role WHERE id = $id";
+        $this->db->query($query);
+        redirect('Role/role');
+    }
 }

@@ -93,7 +93,7 @@ class M_log_error extends CI_model
         return $data;
     }
 
-    public function editing_data()
+    public function editing_data_error()
     {
         $data = [
             'entry_date'        => $this->input->post('entry_date'),

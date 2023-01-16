@@ -28,7 +28,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $r['role']; ?></td>
                             <td>
-                                <a href="<?= base_url('Admin/roleAccess/') . $r['id']; ?>" class="badge badge-warning">Access</a>
+                                <a href="<?= base_url('Role/roleAccess/') . $r['id']; ?>" class="badge badge-warning">Access</a>
                                 <a href="#" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
@@ -62,7 +62,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/role'); ?>" method="post">
+            <form action="<?= base_url('Role/role'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="role" name="role" placeholder="Add new role name...">

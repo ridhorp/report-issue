@@ -163,6 +163,7 @@ class Admin extends CI_Controller
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
         $data['detailid']       = $this->M_dashboard_error->get_id_error($id);
         $data['detail']         = $this->M_dashboard_error->detail_error($id);
+        // $detailid = json_decode($data,true); 
 
         $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');
         $this->form_validation->set_rules('customer', 'Customer name', 'required');
@@ -185,17 +186,17 @@ class Admin extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/edit_error', $data);
             $this->load->view('templates/footer');
-            $this->session->set_Flashdata('message', '<div class= "alert alert-danger" role="alert">Error is required</div>');
         } else {
             $data['admin']  = $this->M_dashboard_error->insert_error();
             $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">Error Edited</div>');
+            redirect('admin');
         }
     }
 
     public function editing_error()
     {
-        $this->M_log_error->editing_data($id);
-        redirect('admin');
+        $this->M_log_error->editing_data_error($id);
+        redirect('admin/index');
     }
 
     public function list_error_admin()
@@ -250,130 +251,5 @@ class Admin extends CI_Controller
         echo json_encode($error_id);
         $this->M_dashboard_error->deletedError($error_id) > 0;
         redirect('admin/index');
-    }
-
-    public function role()
-    {
-        $data['title']  = 'Role';
-        $data['user']   = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['role']   = $this->db->get('user_role')->result_array();;
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function roleAccess($role_id)
-    {
-        $data['title'] = 'Role Access';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
-        $this->db->where('id !=', 1);
-        $data['menu'] = $this->db->get('user_menu')->result_array();
-
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/role-access', $data);
-        $this->load->view('templates/footer');
-    }
-
-
-
-    public function changeAccess()
-    {
-        $menu_id = $this->input->post('menuId');
-        $role_id = $this->input->post('roleId');
-
-        $data = [
-            'role_id' => $role_id,
-            'menu_id' => $menu_id
-        ];
-
-        $result = $this->db->get_where('user_access_menu', $data);
-
-        if ($result->num_rows() < 1) {
-            $this->db->insert('user_access_menu', $data);
-        } else {
-            $this->db->delete('user_access_menu', $data);
-        }
-
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Access Changed!</div>');
-    }
-
-
-    public function user()
-    {
-        $data['title']          = 'User Management';
-        $data['user']           = $this->M_user->get_user();
-        $data['divisi']         = $this->session->userdata('divisi');
-        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
-
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
-        $this->form_validation->set_rules('password1', 'Pasword', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/user', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $data_form = array(
-                'name'      => ($this->input->post('name', true)),
-                'email'     => ($this->input->post('email', true)),
-                'divisi'    => ($this->input->post('divisi', true)),
-                'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'is_active' => 1,
-                'date_created' => time()
-            );
-
-            $this->M_user->insert_user($data_form);
-            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
-            redirect('admin/user');
-        }
-    }
-
-    public function add_user()
-    {
-        $data['title']          = 'User Management';
-        $data['user']           = $this->M_user->get_user();
-        $data['divisi']     = $this->session->userdata('divisi');
-        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
-
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
-        $this->form_validation->set_rules('password1', 'Pasword', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/add_user', $data);
-            $this->load->view('templates/footer');
-            $this->session->set_Flashdata('message', '<div class= "alert alert-danger" role="alert">Data is required</div>');
-        } else {
-            $data_form = array(
-                'name'      => ($this->input->post('name', true)),
-                'email'     => ($this->input->post('email', true)),
-                'divisi'    => ($this->input->post('divisi', true)),
-                'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'is_active' => 1,
-                'date_created' => time()
-            );
-
-            $this->M_user->insert_user($data_form);
-            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
-            redirect('admin/user');
-        }
     }
 }

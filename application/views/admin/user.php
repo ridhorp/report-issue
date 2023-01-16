@@ -14,7 +14,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="<?= base_url('admin/add_user'); ?>" class="btn btn-primary mb-3">Add User</a>
+            <a href="<?= base_url('user/add_user'); ?>" class="btn btn-primary mb-3">Add User</a>
 
             <div class="table-responsive">
                 <table class="table table-striped dt -responsive nowrap" width="100%" id="table-error">

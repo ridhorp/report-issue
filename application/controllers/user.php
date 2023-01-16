@@ -68,4 +68,75 @@ class User extends CI_Controller
 
         echo json_encode($json_data);
     }
+
+    public function user()
+    {
+        $data['title']          = 'User Management';
+        $data['user']           = $this->M_user->get_user();
+        $data['divisi']         = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('password1', 'Pasword', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/user', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data_form = array(
+                'name'      => ($this->input->post('name', true)),
+                'email'     => ($this->input->post('email', true)),
+                'divisi'    => ($this->input->post('divisi', true)),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'is_active' => 1,
+                'date_created' => time()
+            );
+
+            $this->M_user->insert_user($data_form);
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
+            redirect('admin/user');
+        }
+    }
+
+    public function add_user()
+    {
+        $data['title']          = 'User Management';
+        $data['user']           = $this->M_user->get_user();
+        $data['divisi']     = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('password1', 'Pasword', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/add_user', $data);
+            $this->load->view('templates/footer');
+            $this->session->set_Flashdata('message', '<div class= "alert alert-danger" role="alert">Data is required</div>');
+        } else {
+            $data_form = array(
+                'name'      => ($this->input->post('name', true)),
+                'email'     => ($this->input->post('email', true)),
+                'divisi'    => ($this->input->post('divisi', true)),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'is_active' => 1,
+                'date_created' => time()
+            );
+
+            $this->M_user->insert_user($data_form);
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
+            redirect('admin/user');
+        }
+    }
 }

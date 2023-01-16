@@ -97,12 +97,12 @@ class Auth extends CI_Controller
 			];
 
 			$this->db->insert('user', $data);
+
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Yeay! your account has been created. Please log in now.</div>');
 			redirect('auth');
 		}
 	}
-
 
 	public function logout()
 	{

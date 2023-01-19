@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="container">
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-            <form action="<?= base_url('admin/user'); ?>" method="post" id="form_usser">
+            <form action="<?= base_url('user/user'); ?>" method="post" id="form_usser">
                 <div class="body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Add user name" autocomplete="off">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-secondary" href="<?= base_url('admin/index') ?>" role="button">Close</a>
+                    <a class="btn btn-secondary" href="<?= base_url('user/user') ?>" role="button">Close</a>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>

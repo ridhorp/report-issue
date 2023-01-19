@@ -29,7 +29,7 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?= base_url('Role/roleAccess/') . $r['id']; ?>" class="badge badge-warning">Access</a>
-                                <a href="<?= base_url('Role/deleteRole/') . $r['id']; ?>" class="badge badge-danger">Delete</a>
+                                <a href="<?= base_url('Role/deleteRole/') . $r['id']; ?>" class="badge badge-danger" data-toggle='modal' data-target='#deleteRoleModal'>Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>
@@ -48,11 +48,31 @@
 </div>
 <!-- End of Main Content -->
 
-<!-- Modal -->
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteRoleModal" tabindex="-1" aria-labelledby="deleteRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="id_menu" name="id_menu">
+            Do you want to deleted this role?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-danger" href="<?= base_url('Role/deleteRole/'). $r['id'];?>" role="button">Delete</a>
+        </div>
+        </div>
+    </div>
+</div>
 <!-- Button trigger modal -->
 
 
-<!-- Modal -->
+<!-- Add Modal -->
 <div class="modal fade" id="newRoleModal" tabindex="-1" role="dialog" aria-labelledby="newRoleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

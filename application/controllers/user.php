@@ -56,7 +56,7 @@ class User extends CI_Controller
             $nestedData[]   = $row['email'];
             $nestedData[]   = $row['name_divisi'];
             $nestedData[]   = $row['role_id'];
-            $nestedData[]   = " <a href='". site_url('User/edituser/' . $row['id']) ."' class='badge badge-info'>Edit</a>
+            $nestedData[]   = " <a href='". site_url('User/user_edit/' . $row['id']) ."' class='badge badge-info'>Edit</a>
                                 <a href='". site_url('User/deleteuser/' . $row['id']) ."' class='badge badge-danger' data-id='".$row['id']."' id='delete-error' '>Delete</button>";
             $data[] = $nestedData;
         }
@@ -108,7 +108,7 @@ class User extends CI_Controller
 
             $this->M_user->insert_user($data_form);
             $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
-            redirect('admin/user');
+            redirect('user/user');
         }
     }
 
@@ -144,26 +144,24 @@ class User extends CI_Controller
 
             $this->M_user->insert_user($data_form);
             $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New User Added!</div>');
-            redirect('admin/user');
+            redirect('user/user');
         }
     }
 
-    public function edit_user($id)
+    public function user_edit($id)
     {
-        $data['title']  = 'Edit User';
-        $data['user']   = $this->M_user->get_user();
+        $data['title']          = 'Edit User';
+        $data['user']           = $this->M_user->get_user();
 
+        $data['iduser']         = $this->M_user->get_id_user($id);
 
-        $data['subMenu']    = $this->M_sub_menu->get_submenu();
-        $data['idsubmenu']  = $this->M_sub_menu->get_id_submenu($id);
-        $data['menu']       = $this->M_menu->get_menu();
+        $data['divisi']         = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('divisi', 'Divisi', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('role_id', 'Role id', 'required');
-
 
 
         if ($this->form_validation->run() == false) {
@@ -173,9 +171,16 @@ class User extends CI_Controller
             $this->load->view('user/edit_user', $data);
             $this->load->view('templates/footer');
         } else {
+            // $data['user']  = $this->M_User->insert_user();
             $this->M_user->insert_useredit();
-            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New Submenu Edited!</div>');
+            $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">User Edited!</div>');
             redirect('user/user');
         }
+    }
+
+    public function editing_user()
+    {
+        $this->M_user->editing_data($id);
+        redirect('user/user');
     }
 }

@@ -117,10 +117,9 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['entry_date'];
             $nestedData[]   = $row['customer'];
             $nestedData[]   = $row['product'];
-            $nestedData[]   = $row['product'];
             $nestedData[]   = $row['error_category'];
             $nestedData[]   = $row['error_type'];
-            $nestedData[]   = "<a href='Admin/detailerror/" . $row['id'] . "' class='badge badge-warning'>Detail</a>";
+            $nestedData[]   = "<a href='". site_url('Admin/detailerror/' . $row['id']) ."' class='badge badge-warning'>Detail</a>";
             $data[] = $nestedData;
         }
 
@@ -233,7 +232,7 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['error_type'];
             $nestedData[]   = " <a href='". site_url('Admin/editerror/' . $row['id']) ."' class='badge badge-info'>Edit</a>
                                 <a href='". site_url('Admin/detailerror/' . $row['id']) ."' class='badge badge-warning'>Detail</a>
-                                <a href='". site_url('Admin/deleteerror/' . $row['id']) ."' class='badge badge-danger' data-id='".$row['id']."' id='delete-error' data-toggle='modal' data-target='#deleteModal'onclick='return confirm('ingin menghapus data ini?');' '>Delete</button>";
+                                <a href='". site_url('Admin/deleteerror/' . $row['id']) ."' class='badge badge-danger' data-id='".$row['id']."' id='delete-error' data-toggle='modal' data-target='#deleteModal'>Delete</button>";
             $data[] = $nestedData;
         }
 

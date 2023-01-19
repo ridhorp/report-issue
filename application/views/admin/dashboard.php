@@ -16,20 +16,11 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Entry Date</th>
-                            <!-- <th scope="col">Divisi</th> -->
                             <th scope="col">Customer name</th>
                             <th scope="col">Code product</th>
-                            <!-- <th scope="col">Material Quantity</th> -->
-                            <!-- <th scope="col">Material Loss</th> -->
-                            <!-- <th scope="col">Service Loss</th> -->
                             <th scope="col">Error category</th>
                             <th scope="col">Error type</th>
-                            <!-- <th scope="col">Description</th> -->
-                            <!-- <th scope="col">Reason</th> -->
-                            <!-- <th scope="col">Solution</th> -->
-                            <!-- <th scope="col">PIC</th> -->
-                            <!-- <th scope="col">Problem solve</th> -->
-                            <th scope="row">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -55,10 +46,10 @@
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <!-- DATATABLES BS 4-->
-<!-- <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script> -->
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
 <script>
     var dataTable = $('#table-error').DataTable({
         "serverSide": true,

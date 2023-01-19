@@ -2,13 +2,14 @@
 <div class="container-fluid">
     <div class="container">
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-            <form action="<?= base_url('admin/user'); ?>" method="post" id="form_usser">
+            <form action="<?= base_url('User/editing_user'); ?>" method="post" id="form_usser">
                 <div class="body">
+                <input type="hidden" name="id" id="id"value="<?= $iduser['id']; ?>">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Add user name" autocomplete="off">
+                        <input type="text" class="form-control" id="name" name="name" value="<?= $iduser['name']; ?>" placeholder="Add user name" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Add email" autocomplete="off">
+                        <input type="text" class="form-control" id="email" name="email" value="<?= $iduser['email']; ?>" placeholder="Add email" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <select name="divisi" id="divisi" class="form-control">
@@ -29,8 +30,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-secondary" href="<?= base_url('admin/index') ?>" role="button">Close</a>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a class="btn btn-secondary" href="<?= base_url('User/user') ?>" role="button">Close</a>
+                    <button type="submit" class="btn btn-primary">Edit</button>
                 </div>
             </form>
     </div>

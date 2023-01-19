@@ -10,6 +10,12 @@ class M_role_user extends CI_model
         return $data;
     }
 
+    public function insert_role()
+    {
+        $data = $this->db->insert('user_role', ['role' => $this->input->post('role')]);
+        return $data;
+    }
+
     public function get_access()
     {
         $menu_id = $this->input->post('menuId');

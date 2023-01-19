@@ -10,6 +10,11 @@ class M_user extends CI_model
         return $data;
     }
 
+    public function get_id_user($id)
+    {
+        return $this->db->get_where('user', ['id' => $id])->row_array();
+    }
+
     public function insert_user($data)
     {
         $this->db->insert($this->_table, $data);
@@ -77,13 +82,25 @@ class M_user extends CI_model
     public function insert_useredit()
     {
         $data = [
+            'name'      => $this->input->post('name'),
+            'email'     => $this->input->post('email'),
+            'divisi'    => $this->input->post('divisi'),
+            'password'  => $this->input->post('password'),
+            'role_id'   => $this->input->post('role_id'),
+        ];
+        $data = $this->db->insert('user', $data);
+        return $data;
+    }
+
+    public function editing_data()
+    {
+        $data = [
             'name'     => $this->input->post('name'),
             'email'   => $this->input->post('email'),
             'divisi'       => $this->input->post('divisi'),
             'password'      => $this->input->post('password'),
-            'role_id' => $this->input->post('role_id'),
         ];
-        $data = $this->db->insert('user', $data);
-        return $data;
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('user', $data);
     }
 }

@@ -8,19 +8,16 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col lg-12">
+        <div class="col lg-8">
 
             <div class="table-responsive">
-                <table class="table table-striped dt-responsive nowrap" width="100%" id="table-error">
+                <table class="table table-striped dt -responsive nowrap" width="100%" id="table-error">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Entry Date</th>
-                            <th scope="col">Customer name</th>
-                            <th scope="col">Code product</th>
-                            <th scope="col">Error category</th>
-                            <th scope="col">Error type</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Divisi</th>
                         </tr>
                     </thead>
                 </table>
@@ -37,6 +34,9 @@
 <!-- End of Main Content -->
 
 
+<!-- Modal -->
+
+
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('aset/'); ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('aset/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -46,10 +46,10 @@
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <!-- DATATABLES BS 4-->
-<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script> -->
 <script>
     var dataTable = $('#table-error').DataTable({
         "serverSide": true,
@@ -68,12 +68,12 @@
             [10, 15, 20]
         ],
         "ajax": {
-            url: "<?= site_url('admin/list_error'); ?>",
+            url: "<?= site_url('user/list_user'); ?>",
             type: "post",
             data: {
                 tanggal_awal: '',
-                tanggal_akhir: '',
-                divisi: '<?= $divisi; ?>'
+                tanggal_akhir: ''
+
             },
             error: function() {
                 $(".my-table-error").html("");
@@ -92,29 +92,4 @@
 
         });
     });
-</script>
-
-<script>
-$(document).raedy(function() {
-    $(document).on('click'. '#error', function() {
-        var divisi   = $(this).data('divisi');
-        var material_quantity   = $(this).data('material_quantity');
-        var material_loss       = $(this).data('material_loss');
-        var service_loss        = $(this).data('service_loss');
-        var description         = $(this).data('description');
-        var reason              = $(this).data('reason');
-        var pic                 = $(this).data('pic');
-        var solution            = $(this).data('solution');
-        var problem_solve       = $(this).data('problem_solve');
-        $('#divisi').text(divisi);
-        $('#material_quantity').text(material_quantity);
-        $('#material_loss ').text(material_loss );
-        $('#service_loss').text(service_loss);
-        $('#description').text(description);
-        $('#reason').text(reason);
-        $('#pic').text(pic);
-        $('#solution').text(solution);
-        $('#problem_solve').text(problem_solve);
-    })
-})
 </script>

@@ -10,7 +10,7 @@ class Admin extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
-        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi'));
+        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi', 'M_Category'));
     }
 
     public function index()
@@ -20,6 +20,7 @@ class Admin extends CI_Controller
         $data['admin']          = $this->M_dashboard_error->get_error();
         $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+        $data['list_category']  = $this->M_Category->get_category();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -40,6 +41,7 @@ class Admin extends CI_Controller
         $data['admin']          = $this->M_dashboard_error->get_error();
         $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+        $data['list_category']  = $this->M_Category->get_category()->result();
 
 
         $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');
@@ -251,5 +253,19 @@ class Admin extends CI_Controller
         echo json_encode($error_id);
         $this->M_dashboard_error->deletedError($error_id) > 0;
         redirect('admin/index');
+    }
+
+    public function divisi()
+    {
+        $data['title']          = 'Data Divisi';
+        $data['user']           = $this->M_user->get_user();
+        $data['divisi']         = $this->session->userdata('divisi');
+        $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/divisi', $data);
+        $this->load->view('templates/footer');
     }
 }

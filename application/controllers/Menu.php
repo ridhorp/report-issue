@@ -138,6 +138,7 @@ class Menu extends CI_Controller
 
     public function editing_submenu()
     {
+        $data['idsubmenu']  = $this->M_sub_menu->get_id_submenu($id);
         $this->M_sub_menu->editing_data($id);
         redirect('menu/submenu');
     }

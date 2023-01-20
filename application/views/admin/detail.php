@@ -13,6 +13,10 @@
                             <th>customer name    </th>
                             <td><?= $detail->customer ?></td>
                         </tr>
+                        <!-- <tr>
+                            <th>divisi    </th>
+                            <td><?= $detail->divisi ?></td>
+                        </tr> -->
                         <tr>
                             <th>code product     </th>
                             <td><?= $detail->product ?></td>

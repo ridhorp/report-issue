@@ -116,7 +116,7 @@ class User extends CI_Controller
     {
         $data['title']          = 'User Management';
         $data['user']           = $this->M_user->get_user();
-        $data['divisi']     = $this->session->userdata('divisi');
+        $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
 
         $this->form_validation->set_rules('name', 'Name', 'required');

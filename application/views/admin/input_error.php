@@ -28,18 +28,19 @@
                     <input type="text" class="form-control" id="service" name="service_loss" placeholder="Service loss" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <select name="category" id="category" class="form-control">
+                    <select name="error_category" id="error_category" class="form-control">
                         <option value="">Error Category</option>
                             <?php foreach ($list_category as $row) : ?>
-                        <option value="<?= $row->id;?>"><?= $row->name;?></option>
+                        <option value="<?= $row->name;?>"><?= $row->name;?></option>
                             <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <select name="error_type" id="error_type" class="form-control">
-                        <option value=""> Error type</option>
-                        <option value="Machine error"> Machine error</option>
-                        <option value="Human error"> Human error</option>
+                        <option value="">Error Type</option>
+                            <?php foreach ($list_type as $row) : ?>
+                        <option value="<?= $row->name;?>"><?= $row->name;?></option>
+                            <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">

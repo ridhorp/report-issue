@@ -5,7 +5,7 @@ class M_type extends CI_model
 
     function get_type(){
         $query = $this->db->get('error_type');
-        return $query;
+        return $query;  
     }
 
     public function get_id_type($id)
@@ -13,9 +13,14 @@ class M_type extends CI_model
         return $this->db->get_where('error_type', ['id' => $id])->row_array();
     }
 
-    public function insert_type($data)
+    public function insert_type()
     {
-        $data = $this->db->insert('error_type', $data);
+
+        $data = [
+            'name'     => $this->input->post('type'),
+            'definition'   => $this->input->post('definition'),
+        ];
+        $this->db->insert('error_type', $data);
         return $data;
     }
 

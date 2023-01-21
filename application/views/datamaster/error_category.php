@@ -14,7 +14,7 @@
             <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newCategoryModal">Add New Categories</a>
 
             <table class="table table-hover">
-                <thead>
+                <thead >
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Category</th>

@@ -10,7 +10,7 @@ class DataMaster extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
-        $this->load->model(array( 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi', 'M_Category', 'M_type'));
+        $this->load->model(array( 'M_user', 'M_divisi', 'M_Category', 'M_type'));
     }
 
     public function category()
@@ -44,15 +44,14 @@ class DataMaster extends CI_Controller
 
     public function type()
     {
-        $data['title']          = 'Error type';
+        $data['title']          = 'Error Type';
         $data['user']           = $this->M_user->get_user();
         $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
         $data['list_type']      = $this->M_type->get_type()->result_array();
 
-        
-
-        $this->form_validation->set_rules('type', 'Type', 'required');
+        $this->form_validation->set_rules('type', 'type', 'required');
+        $this->form_validation->set_rules('definition', 'definition', 'required');
         
         if ($this->form_validation->run() == false) {
         $this->load->view('templates/header', $data);
@@ -61,10 +60,7 @@ class DataMaster extends CI_Controller
         $this->load->view('datamaster/error_type', $data);
         $this->load->view('templates/footer');
         } else {
-            $type = $this->input->post('type');
-            $definition = $this->input->post('definition');
-            $data = array('name' => $type, 'definition' => $definition);
-            $this->M_type->insert_type($data);
+            $this->M_type->insert_type();
             $this->session->set_Flashdata('message', '<div class= "alert alert-success" role="alert">New Type Added!</div>');
             redirect('DataMaster/type');
         }

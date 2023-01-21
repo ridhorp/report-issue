@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
 
             <?= form_error('datamaster/error_type', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
@@ -14,11 +14,11 @@
             <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newTypeModal">Add New Type</a>
 
             <table class="table table-hover ">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Type</th>
-                        <th scope="col">Definisi</th>
+                        <th scope="col">Definition</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -86,7 +86,7 @@
             <form action="<?= base_url('DataMaster/type'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="type" name="name" autocomplete="off" placeholder="Add new type name...">
+                        <input type="text" class="form-control" id="type" name="type" autocomplete="off" placeholder="Add new type name...">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="definition" name="definition" autocomplete="off" placeholder="Add definition type...">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">Add Type</button>
                 </div>
             </form>
         </div>

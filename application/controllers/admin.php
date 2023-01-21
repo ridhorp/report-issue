@@ -10,7 +10,7 @@ class Admin extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
-        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi', 'M_Category'));
+        $this->load->model(array('M_log_error', 'M_user', 'M_dashboard_error', 'M_role_user', 'M_divisi', 'M_Category', 'M_type'));
     }
 
     public function index()
@@ -21,6 +21,7 @@ class Admin extends CI_Controller
         $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
         $data['list_category']  = $this->M_Category->get_category();
+        $data['list_type']      = $this->M_type->get_type()->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -42,6 +43,7 @@ class Admin extends CI_Controller
         $data['divisi']         = $this->session->userdata('divisi');
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
         $data['list_category']  = $this->M_Category->get_category()->result();
+        $data['list_type']      = $this->M_type->get_type()->result();
 
 
         $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');
@@ -165,6 +167,8 @@ class Admin extends CI_Controller
         $data['list_divisi']    = $this->M_divisi->get_divisi()->result();
         $data['detailid']       = $this->M_dashboard_error->get_id_error($id);
         $data['detail']         = $this->M_dashboard_error->detail_error($id);
+        $data['list_category']  = $this->M_Category->get_category()->result();
+        $data['list_type']      = $this->M_type->get_type()->result();
         // $detailid = json_decode($data,true); 
 
         $this->form_validation->set_rules('entry_date', 'Entry Date', 'required');

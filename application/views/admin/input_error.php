@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="container">
+    <div class="container col-lg-6">
         <form action="<?= base_url('admin/input_error'); ?>" method="post" id="error_form">
             <div class="body">
                 <div class="form-group">
@@ -30,17 +30,17 @@
                 <div class="form-group">
                     <select name="error_category" id="error_category" class="form-control">
                         <option value="">Error Category</option>
-                            <?php foreach ($list_category as $row) : ?>
-                        <option value="<?= $row->name;?>"><?= $row->name;?></option>
-                            <?php endforeach; ?>
+                        <?php foreach ($list_category as $row) : ?>
+                            <option value="<?= $row->name; ?>"><?= $row->name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <select name="error_type" id="error_type" class="form-control">
                         <option value="">Error Type</option>
-                            <?php foreach ($list_type as $row) : ?>
-                        <option value="<?= $row->name;?>"><?= $row->name;?></option>
-                            <?php endforeach; ?>
+                        <?php foreach ($list_type as $row) : ?>
+                            <option value="<?= $row->name; ?>"><?= $row->name; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">

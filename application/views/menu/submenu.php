@@ -25,7 +25,7 @@
                         <th scope="col">Menu id</th>
                         <th scope="col">URL</th>
                         <th scope="col">Icon</th>
-                        <th scope="col">Active</th>
+                        <!-- <th scope="col">Active</th> -->
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@
                             <td><?= $sm['menu_id']; ?></td>
                             <td><?= $sm['url']; ?></td>
                             <td><?= $sm['icon']; ?></td>
-                            <td><?= $sm['is_active']; ?></td>
+                            <!-- <td><?= $sm['is_active']; ?></td> -->
                             <td>
                                 <a href="<?= base_url('Menu/edit_submenu/') . $sm['id']; ?>" class="badge badge-success">Edit</a>
                                 <a href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" class="badge badge-danger" data-toggle='modal' data-target='#deleteSubmenuModal'>Delete</a>
@@ -120,7 +120,7 @@
             </div>
             <form action="<?= base_url('Menu/editing_submenu'); ?>" method="post">
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id"value="<?= $idsubmenu['id']; ?>">
+                    <input type="hidden" name="id" id="id" value="<?= $idsubmenu['id']; ?>">
                     <div class="form-group">
                         <input type="text" class="form-control" id="title" name="title" value="<?= $idsubmenu['title']; ?>" placeholder="Add new sub menu...">
                     </div>
@@ -136,7 +136,7 @@
                         <input type="text" class="form-control" id="url" name="url" value="<?= $idsubmenu['url']; ?>" placeholder="Add new sub menu Url...">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="icon" name="icon" value="<?= $idsubmenu['icon']; ?>"placeholder="Add new sub menu Icon...">
+                        <input type="text" class="form-control" id="icon" name="icon" value="<?= $idsubmenu['icon']; ?>" placeholder="Add new sub menu Icon...">
                         <div class="form-group">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
@@ -161,20 +161,20 @@
 <div class="modal fade" id="deleteSubmenuModal" tabindex="-1" aria-labelledby="deleteSubmenuModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="id_submenu" name="id_submenu">
-            Do you want to deleted this submenu?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-danger" href="<?= base_url('Menu/deleteSubMenu/'). $sm['id'];?>" role="button">Delete</a>
-        </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_submenu" name="id_submenu">
+                Do you want to deleted this submenu?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="<?= base_url('Menu/deleteSubMenu/') . $sm['id']; ?>" role="button">Delete</a>
+            </div>
         </div>
     </div>
 </div>

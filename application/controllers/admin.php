@@ -123,7 +123,8 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['product'];
             $nestedData[]   = $row['error_category'];
             $nestedData[]   = $row['error_type'];
-            $nestedData[]   = "<a href='". site_url('Admin/detailerror/' . $row['id']) ."' class='badge badge-warning'>Detail</a>";
+            $nestedData[]   = "<a href='" . site_url('Admin/detailerror/' . $row['id']) . "' class='badge badge-warning'>Detail</a>";
+            // $nestedData[]   = "<a href='#' class='badge badge-warning' data-toggle='modal' data-target='#errorDetail'>Detail</a>";
             $data[] = $nestedData;
         }
 
@@ -236,9 +237,9 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['product'];
             $nestedData[]   = $row['error_category'];
             $nestedData[]   = $row['error_type'];
-            $nestedData[]   = " <a href='". site_url('Admin/editerror/' . $row['id']) ."' class='badge badge-info'>Edit</a>
-                                <a href='". site_url('Admin/detailerror/' . $row['id']) ."' class='badge badge-warning'>Detail</a>
-                                <a href='". site_url('Admin/deleteerror/' . $row['id']) ."' class='badge badge-danger' data-id='".$row['id']."' id='delete-error' data-toggle='modal' data-target='#deleteModal'>Delete</button>";
+            $nestedData[]   = " <a href='" . site_url('Admin/editerror/' . $row['id']) . "' class='badge badge-warning'>Edit</a>
+                                <a href='" . site_url('Admin/detailerror/' . $row['id']) . "' class='badge badge-info'>Detail</a>
+                                <a href='" . site_url('Admin/deleteerror/' . $row['id']) . "' class='badge badge-danger' data-id='" . $row['id'] . "' id='delete-error' data-toggle='modal' data-target='#deleteModal'>Delete</button>";
             $data[] = $nestedData;
         }
 
@@ -252,7 +253,8 @@ class Admin extends CI_Controller
         echo json_encode($json_data);
     }
 
-    public function deleteerror(){
+    public function deleteerror()
+    {
         $error_id = $this->input->post('id');
         echo json_encode($error_id);
         $this->M_dashboard_error->deletedError($error_id) > 0;

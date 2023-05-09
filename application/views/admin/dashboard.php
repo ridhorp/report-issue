@@ -20,6 +20,8 @@
                             <th scope="col">Code product</th>
                             <th scope="col">Error category</th>
                             <th scope="col">Error type</th>
+                            <th scope="col">Material Loss</th>
+                            <th scope="col">Service Loss</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -95,26 +97,28 @@
 </script>
 
 <script>
-$(document).raedy(function() {
-    $(document).on('click'. '#error', function() {
-        var divisi   = $(this).data('divisi');
-        var material_quantity   = $(this).data('material_quantity');
-        var material_loss       = $(this).data('material_loss');
-        var service_loss        = $(this).data('service_loss');
-        var description         = $(this).data('description');
-        var reason              = $(this).data('reason');
-        var pic                 = $(this).data('pic');
-        var solution            = $(this).data('solution');
-        var problem_solve       = $(this).data('problem_solve');
-        $('#divisi').text(divisi);
-        $('#material_quantity').text(material_quantity);
-        $('#material_loss ').text(material_loss );
-        $('#service_loss').text(service_loss);
-        $('#description').text(description);
-        $('#reason').text(reason);
-        $('#pic').text(pic);
-        $('#solution').text(solution);
-        $('#problem_solve').text(problem_solve);
+    $(document).raedy(function() {
+        $(document).on('click'.
+            '#error',
+            function() {
+                var divisi = $(this).data('divisi');
+                var material_quantity = $(this).data('material_quantity');
+                var material_loss = $(this).data('material_loss');
+                var service_loss = $(this).data('service_loss');
+                var description = $(this).data('description');
+                var reason = $(this).data('reason');
+                var pic = $(this).data('pic');
+                var solution = $(this).data('solution');
+                var problem_solve = $(this).data('problem_solve');
+                $('#divisi').text(divisi);
+                $('#material_quantity').text(material_quantity);
+                $('#material_loss ').text(material_loss);
+                $('#service_loss').text(service_loss);
+                $('#description').text(description);
+                $('#reason').text(reason);
+                $('#pic').text(pic);
+                $('#solution').text(solution);
+                $('#problem_solve').text(problem_solve);
+            })
     })
-})
 </script>

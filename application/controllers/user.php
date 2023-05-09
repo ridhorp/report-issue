@@ -55,7 +55,6 @@ class User extends CI_Controller
             $nestedData[]   = $row['name'];
             $nestedData[]   = $row['email'];
             $nestedData[]   = $row['name_divisi'];
-            $nestedData[]   = $row['role_id'];
             $nestedData[]   = " <a href='" . site_url('User/user_edit/' . $row['id']) . "' class='badge badge-info'>Edit</a>
                                 <a href='" . site_url('User/deleteuser/' . $row['id']) . "' class='badge badge-danger' data-id='" . $row['id'] . "' id='delete-error' '>Delete</button>";
             $data[] = $nestedData;

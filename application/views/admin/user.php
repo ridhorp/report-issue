@@ -24,7 +24,6 @@
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Divisi</th>
-                            <th scope="col">Role id</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

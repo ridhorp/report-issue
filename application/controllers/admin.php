@@ -123,6 +123,8 @@ class Admin extends CI_Controller
             $nestedData[]   = $row['product'];
             $nestedData[]   = $row['error_category'];
             $nestedData[]   = $row['error_type'];
+            $nestedData[]   = $row['material_loss'];
+            $nestedData[]   = $row['service_loss'];
             $nestedData[]   = "<a href='" . site_url('Admin/detailerror/' . $row['id']) . "' class='badge badge-warning'>Detail</a>";
             // $nestedData[]   = "<a href='#' class='badge badge-warning' data-toggle='modal' data-target='#errorDetail'>Detail</a>";
             $data[] = $nestedData;

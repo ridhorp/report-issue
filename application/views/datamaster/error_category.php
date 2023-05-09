@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?php echo base_url() . 'aset/' ?>vendor/datatables.net-bs4/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/responsive.bootstrap4.min.css">
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -5,7 +8,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-4">
 
             <?= form_error('datamaster/error_category', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
@@ -13,8 +16,8 @@
 
             <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newCategoryModal">Add New Categories</a>
 
-            <table class="table table-hover">
-                <thead >
+            <table class="table table-striped table-bordered dt-responsive nowrap" width="100%" id="table-category">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Category</th>
@@ -51,20 +54,20 @@
 <div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-labelledby="deleteCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <input type="hidden" id="id_menu" name="id_menu">
-            Do you want to deleted this data?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-danger" href="<?= base_url('datamaster/deleteCategory/'). $list['id'];?>" role="button">Delete</a>
-        </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Validation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_menu" name="id_menu">
+                Do you want to deleted this data?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="<?= base_url('datamaster/deleteCategory/') . $list['id']; ?>" role="button">Delete</a>
+            </div>
         </div>
     </div>
 </div>
@@ -95,3 +98,18 @@
         </div>
     </div>
 </div>
+
+
+<!-- Datatable -->
+<script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/jquery.dataTables.js"></script>
+<script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url() . 'aset/' ?>vendor/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<!-- DATATABLES BS 4-->
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+<script>
+    $('#table-category').DataTable();
+</script>

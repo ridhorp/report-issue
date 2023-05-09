@@ -86,7 +86,6 @@ class M_user extends CI_model
             'email'     => $this->input->post('email'),
             'divisi'    => $this->input->post('divisi'),
             'password'  => $this->input->post('password'),
-            'role_id'   => $this->input->post('role_id'),
         ];
         $data = $this->db->insert('user', $data);
         return $data;
